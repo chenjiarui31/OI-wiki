@@ -12,9 +12,9 @@ DFS 为图论中的概念，详见 [DFS（图论）](../graph/dfs.md) 页面。�
 ```cpp
 // C++ Version
 for (int i = 1; i <= n; ++i)
-  for (int j = i; j <= n; ++j)
-    for (int k = j; k <= n; ++k)
-      if (i + j + k == n) printf("%d = %d + %d + %d\n", n, i, j, k);
+    for (int j = i; j <= n; ++j)
+		for (int k = j; k <= n; ++k)
+			if (i + j + k == n) printf("%d = %d + %d + %d\n", n, i, j, k);
 ```
 
 ```python
@@ -49,17 +49,21 @@ for i in range(1, n + 1):
 int m, arr[103];  // arr 用于记录方案
 
 void dfs(int n, int i, int a) {
-  if (n == 0) {
-    for (int j = 1; j <= i - 1; ++j) printf("%d ", arr[j]);
-    printf("\n");
-  }
-  if (i <= m) {
-    for (int j = a; j <= n; ++j) {
-      arr[i] = j;
-      dfs(n - j, i + 1, j);  // 请仔细思考该行含义。
-    }
-  }
+	if (n == 0) {
+		for (int j = 1; j <= i - 1; ++j) printf("%d ", arr[j]);
+		printf("\n");
+	}
+	if (i <= m) {
+		for (int j = a; j <= n; ++j) {
+			arr[i] = j;
+			dfs(n - j, i + 1, j);  // 请仔细思考该行含义。
+		}
+	}
 }
+
+// 主函数
+scanf("%d%d", &n, &m);
+dfs(n, 1, 1);
 
 // 主函数
 scanf("%d%d", &n, &m);
